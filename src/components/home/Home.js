@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -84,6 +84,30 @@ const Home = () => {
     cssEase: "linear",
   };
 
+  const [userData, setUserData] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          "https://portfolio-backend-30mp.onrender.com/api/v1/get/user/65b3a22c01d900e96c4219ae"
+        );
+        const data = await response.json();
+        setUserData(data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  // if (!userData) {
+  //   return <div>Loading...</div>;
+  // }
+
+  console.log(userData?.user?.about?.phoneNumber);
+
   return (
     <div>
       <div id="loading">
@@ -119,23 +143,24 @@ const Home = () => {
                   <div className="col-lg-3">
                     <div className="top-header-content">
                       <span>
-                        <i className="fas fa-phone"></i>+012 (345) 67899
+                        <i className="fas fa-phone"></i>
+                        {userData?.user?.about?.phoneNumber}
                       </span>
                     </div>
                   </div>
                   <div className="col-lg-4">
                     <div className="top-header-content">
                       <span>
-                        <i className="fas fa-map-marker-alt"></i>63 Plabon Road,
-                        USA
+                        <i className="fas fa-map-marker-alt"></i>
+                        {userData?.user?.about?.address}
                       </span>
                     </div>
                   </div>
                   <div className="col-lg-5">
                     <div className="top-header-content">
                       <span>
-                        <i className="far fa-clock"></i>Sun - Friday : 10 am -
-                        08 pm
+                        <i className="far fa-clock"></i>
+                        Sun - Friday : 10 am - 08 pm
                       </span>
                     </div>
                   </div>
@@ -202,17 +227,17 @@ const Home = () => {
                       </li>
                       <li>
                         <HashLink smooth to="#portfolio">
-                          portfolio
+                          Portfolio
                         </HashLink>
                       </li>
                       <li>
                         <HashLink smooth to="#team">
-                          team
+                          Team
                         </HashLink>
                       </li>
                       <li>
                         <HashLink smooth to="#price">
-                          price
+                          Price
                         </HashLink>
                       </li>
                       <li>
