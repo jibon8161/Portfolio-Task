@@ -190,7 +190,7 @@ const Home = () => {
                 <div className="row">
                   <div className="col-lg-2">
                     <div className="logo">
-                      <Link to="index.html">
+                      <Link to="/">
                         <img src="assets/images/logo.png" alt="" />
                       </Link>
                     </div>
@@ -206,56 +206,41 @@ const Home = () => {
                       <nav>
                         <ul id="mobile-menu">
                           <li className="current">
-                            <HashLink smooth to="#home">
-                              Home
-                            </HashLink>
+                            <a href="#home">Home</a>
                           </li>
                           <li>
-                            <HashLink smooth to="#About">
-                              About
-                            </HashLink>
+                            <a href="#About">About</a>
                           </li>
                           <li>
-                            <HashLink smooth to="#Services">
-                              Services
-                            </HashLink>
+                            <a href="#Services">Services</a>
                           </li>
                           <li>
-                            <HashLink smooth to="#portfolio">
-                              Portfolio
-                            </HashLink>
+                            <a href="#portfolio">Portfolio</a>
                           </li>
                           <li>
-                            <HashLink smooth to="#team">
-                              Team
-                            </HashLink>
+                            <a href="#team">Team</a>
                           </li>
                           <li>
-                            <HashLink smooth to="#price">
-                              Price
-                            </HashLink>
+                            <a href="#price">Price</a>
                           </li>
                           <li>
-                            <HashLink smooth to="#Blog">
-                              Blog
-                            </HashLink>
+                            <a href="#Blog">Blog</a>
                             <ul className="submenu">
                               <li>
-                                <Link to="blog.html">Latest Blog</Link>
+                                <a href="blog.html">Latest Blog</a>
                               </li>
                               <li>
-                                <Link to="blog-details.html">Blog Details</Link>
+                                <a href="blog-details.html">Blog Details</a>
                               </li>
                             </ul>
                           </li>
                           <li>
-                            <HashLink smooth to="#Contact">
-                              Contact
-                            </HashLink>
+                            <a href="#Contact">Contact</a>
                           </li>
                         </ul>
                       </nav>
                     </div>
+
                     {/* Display user's name here */}
                   </div>
                 </div>
@@ -461,9 +446,9 @@ const Home = () => {
                         </Link>
                       </li>
                     </ul>
-                    <Link to="#" className="btn about-btn">
-                      Contact Us <i className="fa fa-arrow-right"></i>
-                    </Link>
+                    <HashLink to="#Contact" className="btn about-btn">
+                      Contact Me <i className="fa fa-arrow-right"></i>
+                    </HashLink>
                   </div>
                 </div>
               </div>
@@ -486,86 +471,30 @@ const Home = () => {
                       <img src="assets/images/service-text.png" alt="" />
                     </span>
                     <p className="section-para">
-                      <span></span>About Us
+                      <span></span>About Me
                     </p>
-                    <h1>Most Creative Agency For Your Project</h1>
+                    <h1>{userData?.user?.about?.subTitle}</h1>
                   </div>
                 </div>
               </div>
-              <div className="row pb-30">
-                <div className="col-lg-6">
-                  <div className="single-service-box">
-                    <div className="single-service-icon-box">
-                      <p>01</p>
-                      <i className="fas fa-bezier-curve"></i>
+              <div className="container">
+                <div className="row pb-30">
+                  {userData?.user?.services.map((service, index) => (
+                    <div className="col-lg-6 mb-4" key={index}>
+                      <div className="single-service-box">
+                        <div className="single-service-icon-box">
+                          {/* <p>{index + 1}</p> */}
+                          <img src={service?.image.url} alt="" />
+                          {/* <i className={`fas ${service.image.url}`}></i> */}
+                        </div>
+                        <div className="service-box-content">
+                          <h3>{service?.name}</h3>
+                          <h3>Charge: {service?.charge}</h3>
+                          <p>{service?.desc}</p>
+                        </div>
+                      </div>
                     </div>
-                    <div className="service-box-content">
-                      <h3>Graphics Design</h3>
-                      <p>
-                        Inventore veritatis et quasi beata vitae dicta sunt
-                        explicabo. Neenms ipsam voluptatem voluptas
-                      </p>
-                      <Link to="#" className="service-btn">
-                        Read More <i className="fa fa-arrow-right"></i>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-lg-6">
-                  <div className="single-service-box">
-                    <div className="single-service-icon-box">
-                      <p>02</p>
-                      <i className="fas fa-laptop-code"></i>
-                    </div>
-                    <div className="service-box-content">
-                      <h3>Web Development</h3>
-                      <p>
-                        Inventore veritatis et quasi beata vitae dicta sunt
-                        explicabo. Neenms ipsam voluptatem voluptas
-                      </p>
-                      <Link to="#" className="service-btn">
-                        Read More <i className="fa fa-arrow-right"></i>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="row">
-                <div className="col-lg-6">
-                  <div className="single-service-box">
-                    <div className="single-service-icon-box">
-                      <p>03</p>
-                      <i className="fas fa-chart-line"></i>
-                    </div>
-                    <div className="service-box-content">
-                      <h3>Data Analysis</h3>
-                      <p>
-                        Inventore veritatis et quasi beata vitae dicta sunt
-                        explicabo. Neenms ipsam voluptatem voluptas
-                      </p>
-                      <Link to="#" className="service-btn">
-                        Read More <i className="fa fa-arrow-right"></i>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-lg-6">
-                  <div className="single-service-box">
-                    <div className="single-service-icon-box">
-                      <p>04</p>
-                      <i className="fas fa-anchor"></i>
-                    </div>
-                    <div className="service-box-content">
-                      <h3>Server Security</h3>
-                      <p>
-                        Inventore veritatis et quasi beata vitae dicta sunt
-                        explicabo. Neenms ipsam voluptatem voluptas
-                      </p>
-                      <Link to="#" className="service-btn">
-                        Read More <i className="fa fa-arrow-right"></i>
-                      </Link>
-                    </div>
-                  </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -580,19 +509,26 @@ const Home = () => {
                 <div className="col-lg-5">
                   <div className="section-title portfolio-title">
                     <p className="section-para">
-                      <span></span>About Us
+                      <span></span>Portfolio
                     </p>
-                    <h1>Most Creative Agency For Your Project</h1>
+                    <h1>
+                      <span className="text-info">
+                        {" "}
+                        {userData?.user?.about?.some_total}
+                      </span>{" "}
+                      projects completed! 🚀 Excited to share a glimpse of a few
+                      of them!
+                    </h1>
                   </div>
                 </div>
                 <div className="col-lg-7 text-right">
                   <div className="portfolio-btn-area">
-                    <Link to="#" className="btn portfolio-btn">
+                    <HashLink to="#portfolio" className="btn portfolio-btn">
                       View more <i className="fa fa-arrow-right"></i>
-                    </Link>
-                    <Link to="#" className="portfolio-btn-2">
+                    </HashLink>
+                    <HashLink to="#Contact" className="portfolio-btn-2">
                       Let’s Talk <i className="fa fa-arrow-right"></i>
-                    </Link>
+                    </HashLink>
                   </div>
                 </div>
               </div>
