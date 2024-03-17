@@ -3,9 +3,9 @@ $(function () {
     "use strict";
 
    //===== Prealoder
-   $(window).load(function() {
-    $("#loading").fadeOut(500);
-});
+//    $(window).load(function() {
+//     $("#loading").fadeOut(500);
+// });
 
 //header-scroll
     let areaHeight = $('[data-scroll-area="true"]').height();

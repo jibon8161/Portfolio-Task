@@ -581,11 +581,11 @@ header {
 ----------------------------------------*/
 
 .hero-bg-1 {
-  background: url(https://images.unsplash.com/photo-1511227499331-25c621db940e?q=80&w=2128&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+  background: url(https://images.pexels.com/photos/3861972/pexels-photo-3861972.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
   background-color: #ddd;
 }
 .hero-bg-2 {
-  background: url(https://images.unsplash.com/photo-1528141603775-81fd11f61682?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fDE5MjAlMjB4JTIwMTA4MHxlbnwwfHwwfHx8MA%3D%3D);
+  background: url(https://images.pexels.com/photos/276452/pexels-photo-276452.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load);
   background-color: #ddd;
 }
 .hero-bg-3 {
@@ -617,7 +617,7 @@ header {
 }
 
 .hero-para {
-  font-size: 26px;
+  font-size: 20px;
   color: #fff;
   text-transform: capitalize;
   line-height: 35px;
@@ -629,7 +629,7 @@ header {
 .hero-para:before {
   position: absolute;
   width: 5px;
-  height: 70px;
+  height: 110px;
   left: 0;
   top: 0;
   background: #f26c4f;
@@ -825,6 +825,7 @@ header {
   padding: 150px 0;
 }
 .about-us-img {
+  width: 45%;
   position: absolute;
   bottom: 0;
 }
@@ -834,8 +835,10 @@ header {
   z-index: -1;
 }
 .about-img-1 {
-  margin-top: 140px;
+  margin-top: 100px;
+  margin-bottom: 20px;
   margin-left: -40px;
+  border-radius: 10px;
 }
 .section-para {
   font-size: 16px;
