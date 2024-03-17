@@ -102,7 +102,7 @@ const Home = () => {
 
     fetchData();
   }, []);
-  console.log(userData?.user?.skills);
+  console.log(userData?.user?.testimonials[0]?.image?.url);
 
   return (
     <div>
@@ -218,7 +218,7 @@ const Home = () => {
                             <a href="#portfolio">Portfolio</a>
                           </li>
                           <li>
-                            <a href="#team">Team</a>
+                            <a href="#team">Skills</a>
                           </li>
                           <li>
                             <a href="#price">Price</a>
@@ -533,70 +533,6 @@ const Home = () => {
                 </div>
               </div>
             </div>
-            <div className="container">
-              <div className="row">
-                {userData?.user?.skills.map((skill, index) => (
-                  <div className="col-lg-3 col-md-4 col-sm-6 mb-4" key={index}>
-                    <div
-                      className="card"
-                      style={{
-                        borderRadius: "15px",
-                        boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-                        overflow: "hidden", // Ensure overflow is hidden for animation
-                      }}
-                    >
-                      <img
-                        src={skill.image.url}
-                        className="card-img-top"
-                        alt={skill.name}
-                        style={{
-                          borderTopLeftRadius: "15px",
-                          borderTopRightRadius: "15px",
-                          objectFit: "cover",
-                        }}
-                      />
-                      <div className="card-body" style={{ padding: "1.25rem" }}>
-                        <h5
-                          className="card-title"
-                          style={{
-                            fontSize: "1.25rem",
-                            fontWeight: "bold",
-                            color: "#333",
-                          }}
-                        >
-                          {skill.name}
-                        </h5>
-                        <div
-                          className="progress mt-auto"
-                          style={{
-                            height: "8px",
-                            backgroundColor: "#e9ecef",
-                            borderRadius: "5px",
-                            position: "relative", // Position relative for absolute positioning of progress bar
-                          }}
-                        >
-                          <div
-                            className="progress-bar"
-                            role="progressbar"
-                            style={{
-                              width: "0%",
-                              backgroundColor: "#007bff",
-                              borderRadius: "5px",
-                              position: "absolute",
-                              bottom: "0", // Position progress bar at the bottom
-                              animation: "fillProgress 1s ease-in-out forwards", // Apply animation
-                            }}
-                            aria-valuenow={skill?.percentage}
-                            aria-valuemin="0"
-                            aria-valuemax="100"
-                          ></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
 
             <div class="container-fluid text-center">
               <div class="row">
@@ -722,7 +658,7 @@ const Home = () => {
 
           {/* <!--======  CTA PART End ======--> */}
 
-          {/* <!--======  TEAM PART START ======--> */}
+          {/* <!--======  Skills PART START ======--> */}
 
           <section className="team-area pt-140 pb-140" id="team">
             <div className="container">
@@ -730,19 +666,23 @@ const Home = () => {
                 <div className="col-lg-6 offset-lg-3 text-center pb-80">
                   <div className="section-title team-title">
                     <p className="section-para">
-                      <span></span>our team member
+                      <span></span>Skills
                     </p>
-                    <h1>Meet Our Most Creative Minds That Are Professional</h1>
+                    <h1>Discover My Expertise and Proficiency</h1>
                   </div>
                 </div>
               </div>
               <div className="row">
                 <div className="col-lg-12">
                   <Slider {...teamSettings}>
-                    {teamMembers.map((member, index) => (
+                    {userData?.user?.skills.map((skill, index) => (
                       <div key={index} className="single-team-area">
-                        <div className="single-team-img text-center">
-                          <img src={member.imgSrc} alt={member.name} />
+                        <div className="single-team-img text-center ml-3">
+                          <img
+                            className="w-50% img-fluid"
+                            src={skill.image.url}
+                            alt={skill.name}
+                          />
                           <span className="team-icon-1">
                             <img src="assets/images/team/icon/1.png" alt="" />
                           </span>
@@ -754,8 +694,8 @@ const Home = () => {
                           </span>
                         </div>
                         <div className="single-team-content text-center">
-                          <h4>{member.name}</h4>
-                          <p>{member.role}</p>
+                          <h4>{skill.name}</h4>
+                          <h4>{skill.percentage}%</h4>
                         </div>
                       </div>
                     ))}
@@ -765,7 +705,7 @@ const Home = () => {
             </div>
           </section>
 
-          {/* <!--======  TEAM PART End ======--> */}
+          {/* <!--======  Skill PART End ======--> */}
 
           {/* <!--======  VIDEO PART START ======--> */}
 
@@ -811,9 +751,9 @@ const Home = () => {
                 <div className="col-lg-6">
                   <div className="section-title project-title">
                     <p className="section-para">
-                      <span></span>company fact
+                      <span></span>Testimonials
                     </p>
-                    <h1>We Are Digital And Creative Agency</h1>
+                    <h1>My Solo Expedition of Success</h1>
                   </div>
                 </div>
                 <div className="col-lg-6 text-right">
@@ -823,16 +763,19 @@ const Home = () => {
                 </div>
               </div>
               <div className="row">
-                <div className="col-lg-3 col-md-6">
+                <div className="col-lg-4 col-md-6">
                   <div className="counter-icon">
                     <i className="fas fa-rocket"></i>
                   </div>
                   <div className="counter-text">
-                    <h1 className="count">6320</h1>
+                    <h1 className="count">
+                      {" "}
+                      {userData?.user?.about?.some_total}{" "}
+                    </h1>
                     <p>Project complete</p>
                   </div>
                 </div>
-                <div className="col-lg-3 col-md-6">
+                <div className="col-lg-4 col-md-6">
                   <div className="counter-icon">
                     <i className="fas fa-life-ring"></i>
                   </div>
@@ -841,22 +784,13 @@ const Home = () => {
                     <p>Satisfied Clients</p>
                   </div>
                 </div>
-                <div className="col-lg-3 col-md-6">
+                <div className="col-lg-4 col-md-6">
                   <div className="counter-icon">
                     <i className="fas fa-trophy"></i>
                   </div>
                   <div className="counter-text">
                     <h1 className="count">963</h1>
                     <p>Awards won</p>
-                  </div>
-                </div>
-                <div className="col-lg-3 col-md-6">
-                  <div className="counter-icon">
-                    <i className="fas fa-universal-access"></i>
-                  </div>
-                  <div className="counter-text">
-                    <h1 className="count">4975</h1>
-                    <p>Expert Team Members</p>
                   </div>
                 </div>
               </div>
@@ -871,55 +805,36 @@ const Home = () => {
             <div className="container">
               <div className="row">
                 <div className="col-lg-5">
-                  <img src="assets/images/testimonial/1.png" alt="" />
+                  <img
+                    className="w-full mt-100 p-3"
+                    src={userData?.user?.testimonials[0]?.image?.url}
+                    alt=""
+                  />
                 </div>
                 <div className="col-lg-7">
                   <Slider
                     {...testimonialSettings}
                     className="testimonial-carousel-active"
                   >
-                    <div className="single-testimonial-content">
-                      <span className="testimonial-quote">
-                        <i className="fa fa-quote-right"></i>
-                      </span>
-                      <p>
-                        Avoids pleasur itself because pleas because those who do
-                        not know how to pursue plesure rationally encou eque
-                        that are extrem painful again is there anyone who loves
-                        pursues or desires to obtain pain of itself.
-                      </p>
-                      <div className="autohor-details">
-                        <img
-                          src="assets/images/testimonial/author.png"
-                          alt=""
-                          className="author-img"
-                        />
-                        <h5 className="author-name">
-                          Michele L. Racinea <span>Web Designer</span>
-                        </h5>
+                    {userData?.user?.testimonials.map((testimonial, index) => (
+                      <div className="single-testimonial-content" key={index}>
+                        <span className="testimonial-quote">
+                          <i className="fa fa-quote-right"></i>
+                        </span>
+                        <p>{testimonial.review}</p>
+                        <div className="autohor-details">
+                          {/* <img
+                            src={}
+                            alt=""
+                            className="author-img"
+                          /> */}
+                          <h5 className="author-name">
+                            {testimonial.name}{" "}
+                            <span>{testimonial.position}</span>
+                          </h5>
+                        </div>
                       </div>
-                    </div>
-                    <div className="single-testimonial-content">
-                      <span className="testimonial-quote">
-                        <i className="fa fa-quote-right"></i>
-                      </span>
-                      <p>
-                        Avoids pleasur itself because pleas because those who do
-                        not know how to pursue plesure rationally encou eque
-                        that are extrem painful again is there anyone who loves
-                        pursues or desires to obtain pain of itself.
-                      </p>
-                      <div className="autohor-details">
-                        <img
-                          src="assets/images/testimonial/author.png"
-                          alt=""
-                          className="author-img"
-                        />
-                        <h5 className="author-name">
-                          Michele L. Racinea <span>Web Designer</span>
-                        </h5>
-                      </div>
-                    </div>
+                    ))}
                   </Slider>
                 </div>
               </div>
