@@ -102,7 +102,7 @@ const Home = () => {
 
     fetchData();
   }, []);
-  console.log(userData?.user?.projects);
+  console.log(userData?.user?.skills);
 
   return (
     <div>
@@ -533,12 +533,77 @@ const Home = () => {
                 </div>
               </div>
             </div>
+            <div className="container">
+              <div className="row">
+                {userData?.user?.skills.map((skill, index) => (
+                  <div className="col-lg-3 col-md-4 col-sm-6 mb-4" key={index}>
+                    <div
+                      className="card"
+                      style={{
+                        borderRadius: "15px",
+                        boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+                        overflow: "hidden", // Ensure overflow is hidden for animation
+                      }}
+                    >
+                      <img
+                        src={skill.image.url}
+                        className="card-img-top"
+                        alt={skill.name}
+                        style={{
+                          borderTopLeftRadius: "15px",
+                          borderTopRightRadius: "15px",
+                          objectFit: "cover",
+                        }}
+                      />
+                      <div className="card-body" style={{ padding: "1.25rem" }}>
+                        <h5
+                          className="card-title"
+                          style={{
+                            fontSize: "1.25rem",
+                            fontWeight: "bold",
+                            color: "#333",
+                          }}
+                        >
+                          {skill.name}
+                        </h5>
+                        <div
+                          className="progress mt-auto"
+                          style={{
+                            height: "8px",
+                            backgroundColor: "#e9ecef",
+                            borderRadius: "5px",
+                            position: "relative", // Position relative for absolute positioning of progress bar
+                          }}
+                        >
+                          <div
+                            className="progress-bar"
+                            role="progressbar"
+                            style={{
+                              width: "0%",
+                              backgroundColor: "#007bff",
+                              borderRadius: "5px",
+                              position: "absolute",
+                              bottom: "0", // Position progress bar at the bottom
+                              animation: "fillProgress 1s ease-in-out forwards", // Apply animation
+                            }}
+                            aria-valuenow={skill?.percentage}
+                            aria-valuemin="0"
+                            aria-valuemax="100"
+                          ></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
             <div class="container-fluid text-center">
               <div class="row">
                 {userData?.user?.projects.slice(0, 2).map((project, index) => (
                   <div class="col-lg-6 mb-4" key={index}>
                     <div class="single-portfolio-item shadow">
-                      <img src={project.image.url} alt="" />
+                      <img src={project?.image?.url} alt="" />
                       <div class="portfolio-overlay-content">
                         <h2>{project.title}</h2>
                         <p>
@@ -546,7 +611,7 @@ const Home = () => {
                           {project?.techStack.map((tech, index) => (
                             <span className="text-primary" key={index}>
                               {tech}
-                              {index !== project.techStack.length - 1 && ", "}
+                              {index !== project?.techStack?.length - 1 && ", "}
                             </span>
                           ))}
                         </p>
@@ -557,15 +622,15 @@ const Home = () => {
                 {userData?.user?.projects.slice(2, 5).map((project, index) => (
                   <div class="col-lg-4 mb-4" key={index}>
                     <div class="single-portfolio-item shadow">
-                      <img src={project.image.url} alt="" />
+                      <img src={project?.image?.url} alt="" />
                       <div class="portfolio-overlay-content">
-                        <h2>{project.title}</h2>
+                        <h2>{project?.title}</h2>
                         <p>
                           <span className="mr-2"> Technologies Used:</span>
                           {project?.techStack.map((tech, index) => (
                             <span className="text-primary" key={index}>
                               {tech}
-                              {index !== project.techStack.length - 1 && ", "}
+                              {index !== project?.techStack?.length - 1 && ", "}
                             </span>
                           ))}
                         </p>
@@ -579,7 +644,7 @@ const Home = () => {
                 {userData?.user?.projects.slice(5, 11).map((project, index) => (
                   <div class="col-lg-4 mb-4" key={index}>
                     <div class="single-portfolio-item shadow">
-                      <img src={project.image.url} alt="" />
+                      <img src={project?.image?.url} alt="" />
                       <div class="portfolio-overlay-content">
                         <h2>{project.title}</h2>
                         <p>
@@ -587,7 +652,7 @@ const Home = () => {
                           {project?.techStack.map((tech, index) => (
                             <span className="text-primary" key={index}>
                               {tech}
-                              {index !== project.techStack.length - 1 && ", "}
+                              {index !== project?.techStack?.length - 1 && ", "}
                             </span>
                           ))}
                         </p>
@@ -599,24 +664,25 @@ const Home = () => {
 
               <div class="row">
                 {userData?.user?.projects
-                  .sort((a, b) => a.sequence - b.sequence) // Sorting based on the sequence
-                  .slice(11, 15) // Slicing after sorting
+                  .sort((a, b) => a.sequence - b.sequence)
+                  .slice(11, 15)
                   .map((project, index) => (
                     <div class="col-lg-3 mb-4" key={index}>
                       <div class="single-portfolio-item shadow">
                         <img
                           className="rounded-3"
-                          src={project.image.url}
+                          src={project?.image?.url}
                           alt=""
                         />
                         <div class="portfolio-overlay-content">
-                          <h2>{project.title}</h2>
+                          <h2>{project?.title}</h2>
                           <p>
                             <span className="mr-2"> Technologies Used:</span>
                             {project?.techStack.map((tech, index) => (
                               <span className="text-primary" key={index}>
                                 {tech}
-                                {index !== project.techStack.length - 1 && ", "}
+                                {index !== project?.techStack?.length - 1 &&
+                                  ", "}
                               </span>
                             ))}
                           </p>
