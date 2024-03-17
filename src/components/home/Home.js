@@ -102,7 +102,7 @@ const Home = () => {
 
     fetchData();
   }, []);
-  console.log(userData?.user?.testimonials[0]?.image?.url);
+  console.log(userData?.user?.timeline);
 
   return (
     <div>
@@ -219,6 +219,9 @@ const Home = () => {
                           </li>
                           <li>
                             <a href="#team">Skills</a>
+                          </li>
+                          <li>
+                            <a href="#testimonial">Testimonial</a>
                           </li>
                           <li>
                             <a href="#price">Price</a>
@@ -745,7 +748,7 @@ const Home = () => {
 
           {/* <!--======  PROJECTS PART START ======--> */}
 
-          <section className="project-counter-area">
+          <section id="testimonial" className="project-counter-area">
             <div className="container">
               <div className="row pb-80">
                 <div className="col-lg-6">
@@ -1004,63 +1007,35 @@ const Home = () => {
                 </div>
               </div>
               <div className="row">
-                <div className="col-lg-4">
-                  <div className="single-blog-area">
-                    <div className="single-blog-img">
-                      <img src="assets/images/blog/1.jpg" alt="" />
-                    </div>
-                    <div className="single-blog-content">
-                      <p>
-                        <i className="far fa-calendar-alt"></i>25 Dec 2019
-                      </p>
-                      <p className="styled-para">
-                        Inspiring Desktop Wallpap Makes November Even More
-                        Colorful (2019 Edition)
-                      </p>
-                      <Link to="#" className="blog-read-more">
-                        Read More <i className="fa fa-arrow-right"></i>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-lg-4">
-                  <div className="single-blog-area">
-                    <div className="single-blog-img">
-                      <img src="assets/images/blog/2.jpg" alt="" />
-                    </div>
-                    <div className="single-blog-content">
-                      <p>
-                        <i className="far fa-calendar-alt"></i>25 Dec 2019
-                      </p>
-                      <p className="styled-para">
-                        We’ve Got A Lil’ Announ To Make Rachel Andrew Is
-                        SmashingMag’s New Editor
-                      </p>
-                      <Link to="#" className="blog-read-more">
-                        Read More <i className="fa fa-arrow-right"></i>
-                      </Link>
+                {userData?.user?.timeline.map((item, index) => (
+                  <div className="col-lg-4 mb-4" key={index}>
+                    <div className="single-blog-area h-100">
+                      <div className="single-blog-img mb-5"></div>
+                      <div className="single-blog-content d-flex flex-column">
+                        <p className="mb-auto">Job Title: {item?.jobTitle}</p>
+                        <p className="mb-auto">
+                          Company Name: {item?.company_name}
+                        </p>
+                        <p className="mb-auto">
+                          Job Location: {item?.jobLocation}
+                        </p>
+                        <p className="mb-auto">
+                          <i className="far fa-calendar-alt">
+                            Start Date: {item?.startDate}
+                          </i>{" "}
+                        </p>
+                        <p className="mb-auto">
+                          <i className="far fa-calendar-alt">
+                            End Date: {item?.endDate}
+                          </i>{" "}
+                        </p>
+                        <p className="mb-0 styled-para">
+                          Responsibilities: {item.summary}
+                        </p>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div className="col-lg-4">
-                  <div className="single-blog-area">
-                    <div className="single-blog-img">
-                      <img src="assets/images/blog/3.jpg" alt="" />
-                    </div>
-                    <div className="single-blog-content">
-                      <p>
-                        <i className="far fa-calendar-alt"></i>25 Dec 2019
-                      </p>
-                      <p className="styled-para">
-                        Quick Wins For Improving Performance And Security Of
-                        Your Website
-                      </p>
-                      <Link to="#" className="blog-read-more">
-                        Read More <i className="fa fa-arrow-right"></i>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
           </section>
