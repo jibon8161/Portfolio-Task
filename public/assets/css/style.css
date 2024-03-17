@@ -1071,6 +1071,7 @@ header {
   position: relative;
   z-index: 1;
   overflow: hidden;
+  border-radius: 20px;
 }
 .portfolio-overlay-content {
   position: absolute;

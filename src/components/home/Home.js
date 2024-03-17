@@ -102,7 +102,7 @@ const Home = () => {
 
     fetchData();
   }, []);
-  console.log(userData);
+  console.log(userData?.user?.projects);
 
   return (
     <div>
@@ -482,7 +482,7 @@ const Home = () => {
                   {userData?.user?.services.map((service, index) => (
                     <div className="col-lg-6 mb-4" key={index}>
                       <div className="single-service-box">
-                        <div className="single-service-icon-box">
+                        <div className="single-service-icon-box ">
                           {/* <p>{index + 1}</p> */}
                           <img src={service?.image.url} alt="" />
                           {/* <i className={`fas ${service.image.url}`}></i> */}
@@ -533,87 +533,97 @@ const Home = () => {
                 </div>
               </div>
             </div>
-            <div className="container-fluid">
-              <div className="row">
-                <div className="col-lg-4 col-md-4">
-                  <div className="single-portfolio-item">
-                    <img src="assets/images/portfolio/1.jpg" alt="" />
-                    <div className="portfolio-overlay-content">
-                      <h2>Creative Works</h2>
-                      <p>Light Illustration</p>
-                      <Link
-                        to="assets/images/portfolio/1.jpg"
-                        className="portfolio-icon img-popup"
-                      >
-                        <i className="fa fa-arrow-right"></i>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-lg-8 col-md-8">
-                  <div className="row">
-                    <div className="col-lg-6 pb-30 col-md-6">
-                      <div className="single-portfolio-item">
-                        <img src="assets/images/portfolio/2.jpg" alt="" />
-                        <div className="portfolio-overlay-content">
-                          <h2>Creative Works</h2>
-                          <p>Light Illustration</p>
-                          <Link
-                            to="assets/images/portfolio/2.jpg"
-                            className="portfolio-icon img-popup"
-                          >
-                            <i className="fa fa-arrow-right"></i>
-                          </Link>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col-lg-6 pb-30 col-md-6">
-                      <div className="single-portfolio-item">
-                        <img src="assets/images/portfolio/3.jpg" alt="" />
-                        <div className="portfolio-overlay-content">
-                          <h2>Creative Works</h2>
-                          <p>Light Illustration</p>
-                          <Link
-                            to="assets/images/portfolio/3.jpg"
-                            className="portfolio-icon img-popup"
-                          >
-                            <i className="fa fa-arrow-right"></i>
-                          </Link>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col-lg-6 col-md-6">
-                      <div className="single-portfolio-item">
-                        <img src="assets/images/portfolio/4.jpg" alt="" />
-                        <div className="portfolio-overlay-content">
-                          <h2>Creative Works</h2>
-                          <p>Light Illustration</p>
-                          <Link
-                            to="assets/images/portfolio/4.jpg"
-                            className="portfolio-icon img-popup"
-                          >
-                            <i className="fa fa-arrow-right"></i>
-                          </Link>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col-lg-6 col-md-6">
-                      <div className="single-portfolio-item">
-                        <img src="assets/images/portfolio/5.jpg" alt="" />
-                        <div className="portfolio-overlay-content">
-                          <h2>Creative Works</h2>
-                          <p>Light Illustration</p>
-                          <Link
-                            to="assets/images/portfolio/5.jpg"
-                            className="portfolio-icon img-popup"
-                          >
-                            <i className="fa fa-arrow-right"></i>
-                          </Link>
-                        </div>
+            <div class="container-fluid text-center">
+              <div class="row">
+                {userData?.user?.projects.slice(0, 2).map((project, index) => (
+                  <div class="col-lg-6 mb-4" key={index}>
+                    <div class="single-portfolio-item shadow">
+                      <img src={project.image.url} alt="" />
+                      <div class="portfolio-overlay-content">
+                        <h2>{project.title}</h2>
+                        <p>
+                          <span className="mr-2"> Technologies Used:</span>
+                          {project?.techStack.map((tech, index) => (
+                            <span className="text-primary" key={index}>
+                              {tech}
+                              {index !== project.techStack.length - 1 && ", "}
+                            </span>
+                          ))}
+                        </p>
                       </div>
                     </div>
                   </div>
-                </div>
+                ))}
+                {userData?.user?.projects.slice(2, 5).map((project, index) => (
+                  <div class="col-lg-4 mb-4" key={index}>
+                    <div class="single-portfolio-item shadow">
+                      <img src={project.image.url} alt="" />
+                      <div class="portfolio-overlay-content">
+                        <h2>{project.title}</h2>
+                        <p>
+                          <span className="mr-2"> Technologies Used:</span>
+                          {project?.techStack.map((tech, index) => (
+                            <span className="text-primary" key={index}>
+                              {tech}
+                              {index !== project.techStack.length - 1 && ", "}
+                            </span>
+                          ))}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div class="row">
+                {userData?.user?.projects.slice(5, 11).map((project, index) => (
+                  <div class="col-lg-4 mb-4" key={index}>
+                    <div class="single-portfolio-item shadow">
+                      <img src={project.image.url} alt="" />
+                      <div class="portfolio-overlay-content">
+                        <h2>{project.title}</h2>
+                        <p>
+                          <span className="mr-2"> Technologies Used:</span>
+                          {project?.techStack.map((tech, index) => (
+                            <span className="text-primary" key={index}>
+                              {tech}
+                              {index !== project.techStack.length - 1 && ", "}
+                            </span>
+                          ))}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div class="row">
+                {userData?.user?.projects
+                  .sort((a, b) => a.sequence - b.sequence) // Sorting based on the sequence
+                  .slice(11, 15) // Slicing after sorting
+                  .map((project, index) => (
+                    <div class="col-lg-3 mb-4" key={index}>
+                      <div class="single-portfolio-item shadow">
+                        <img
+                          className="rounded-3"
+                          src={project.image.url}
+                          alt=""
+                        />
+                        <div class="portfolio-overlay-content">
+                          <h2>{project.title}</h2>
+                          <p>
+                            <span className="mr-2"> Technologies Used:</span>
+                            {project?.techStack.map((tech, index) => (
+                              <span className="text-primary" key={index}>
+                                {tech}
+                                {index !== project.techStack.length - 1 && ", "}
+                              </span>
+                            ))}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
               </div>
             </div>
           </section>
