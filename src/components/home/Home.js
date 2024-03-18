@@ -102,7 +102,7 @@ const Home = () => {
 
     fetchData();
   }, []);
-  console.log(userData?.user?.timeline);
+  console.log(userData?.user);
 
   return (
     <div>
@@ -215,7 +215,7 @@ const Home = () => {
                             <a href="#Services">Services</a>
                           </li>
                           <li>
-                            <a href="#portfolio">Portfolio</a>
+                            <a href="#portfolio">Projects</a>
                           </li>
                           <li>
                             <a href="#team">Skills</a>
@@ -224,18 +224,10 @@ const Home = () => {
                             <a href="#testimonial">Testimonial</a>
                           </li>
                           <li>
-                            <a href="#price">Price</a>
+                            <a href="#Blog">Professional Journey</a>
                           </li>
                           <li>
-                            <a href="#Blog">Blog</a>
-                            <ul className="submenu">
-                              <li>
-                                <a href="blog.html">Latest Blog</a>
-                              </li>
-                              <li>
-                                <a href="blog-details.html">Blog Details</a>
-                              </li>
-                            </ul>
+                            <a href="#price">Price</a>
                           </li>
                           <li>
                             <a href="#Contact">Contact</a>
@@ -826,11 +818,11 @@ const Home = () => {
                         </span>
                         <p>{testimonial.review}</p>
                         <div className="autohor-details">
-                          {/* <img
-                            src={}
+                          <img
+                            src={testimonial.image.url}
                             alt=""
                             className="author-img"
-                          /> */}
+                          />
                           <h5 className="author-name">
                             {testimonial.name}{" "}
                             <span>{testimonial.position}</span>
@@ -987,7 +979,7 @@ const Home = () => {
 
           {/* <!--======  PRICING PART END ======--> */}
 
-          {/* <!--======  BLOG PART START ======--> */}
+          {/* <!--======  Professional Journey ======--> */}
 
           <section className="blog-area pb-140" id="Blog">
             <div className="container">
@@ -995,42 +987,55 @@ const Home = () => {
                 <div className="col-lg-4 pb-80">
                   <div className="section-title blog-title">
                     <p className="section-para">
-                      <span></span>News & blog
+                      <span></span>Professional Journey
                     </p>
-                    <h1>Latest Articles For New Project</h1>
+                    <h1>Highlights of Career Milestones</h1>
                   </div>
                 </div>
                 <div className="col-lg-8 text-right">
-                  <Link to="#" className="btn blog-btn">
-                    view all news <i className="fa fa-arrow-right"></i>
-                  </Link>
+                  <HashLink smooth to="#Contact" className="btn blog-btn">
+                    Contact Me <i className="fa fa-arrow-right"></i>
+                  </HashLink>
                 </div>
               </div>
               <div className="row">
                 {userData?.user?.timeline.map((item, index) => (
-                  <div className="col-lg-4 mb-4" key={index}>
+                  <div
+                    className={`col-lg-${
+                      index === 0 || index === 5 ? "12" : "6"
+                    } ${index === 1 ? "h-100" : ""} mb-4`}
+                    key={index}
+                  >
                     <div className="single-blog-area h-100">
                       <div className="single-blog-img mb-5"></div>
                       <div className="single-blog-content d-flex flex-column">
-                        <p className="mb-auto">Job Title: {item?.jobTitle}</p>
+                        <p className="mb-3">Job Title: {item?.jobTitle}</p>
                         <p className="mb-auto">
                           Company Name: {item?.company_name}
                         </p>
-                        <p className="mb-auto">
+                        <p className="mb-3">
                           Job Location: {item?.jobLocation}
                         </p>
-                        <p className="mb-auto">
+                        <p className="mb-1">
                           <i className="far fa-calendar-alt">
                             Start Date: {item?.startDate}
                           </i>{" "}
                         </p>
-                        <p className="mb-auto">
+                        <p className="mb-3">
                           <i className="far fa-calendar-alt">
                             End Date: {item?.endDate}
                           </i>{" "}
                         </p>
+                        <p>Job Responsibilities:</p>
+                        <ol>
+                          {item.bulletPoints.map((point, index) => (
+                            <li key={index} style={{ marginBottom: "10px" }}>
+                              {index + 1}. {point}
+                            </li>
+                          ))}
+                        </ol>
                         <p className="mb-0 styled-para">
-                          Responsibilities: {item.summary}
+                          Summary : {item.summary}
                         </p>
                       </div>
                     </div>
@@ -1040,7 +1045,7 @@ const Home = () => {
             </div>
           </section>
 
-          {/* <!--======  BLOG PART END ======--> */}
+          {/* <!--======  Professional Journey ======--> */}
 
           {/* <!--======  CONTACT-WITH-FOOTER PART START ======--> */}
 
@@ -1056,9 +1061,9 @@ const Home = () => {
                       <img src="assets/images/contact-text.png" alt="" />
                     </span>
                     <p className="section-para">
-                      <span></span>Message Us
+                      <span></span>Message Me
                     </p>
-                    <h1>Don't Hesitate To Contact With Us</h1>
+                    <h1>Don't Hesitate To Contact</h1>
                   </div>
                 </div>
               </div>
@@ -1102,22 +1107,24 @@ const Home = () => {
                 <div className="col-lg-4">
                   <div className="single-address-area">
                     <span>
-                      <i className="fa fa-arrow-right"></i>+012 (345) 77 999
+                      <i className="fa fa-arrow-right"></i>
+                      {userData?.user?.about?.phoneNumber}
                     </span>
                   </div>
                 </div>
                 <div className="col-lg-4">
                   <div className="single-address-area">
                     <span>
-                      <i className="fa fa-arrow-right"></i>support@gmail.com
+                      <i className="fa fa-arrow-right"></i>
+                      {userData?.user?.email}
                     </span>
                   </div>
                 </div>
                 <div className="col-lg-4">
                   <div className="single-address-area">
                     <span>
-                      <i className="fa fa-arrow-right"></i>55 New Sodor Road,
-                      USA
+                      <i className="fa fa-arrow-right"></i>{" "}
+                      {userData?.user?.about?.address}
                     </span>
                   </div>
                 </div>

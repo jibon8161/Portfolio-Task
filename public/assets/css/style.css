@@ -1412,6 +1412,7 @@ header {
 .author-img {
   margin-left: 0 !important;
   float: left;
+  width: 50px;
 }
 .author-name {
   padding-top: 5px;
