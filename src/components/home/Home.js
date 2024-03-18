@@ -532,83 +532,20 @@ const Home = () => {
             </div>
 
             <div class="container-fluid text-center">
-              <div class="row">
-                {userData?.user?.projects.slice(0, 2).map((project, index) => (
-                  <div class="col-lg-6 mb-4" key={index}>
-                    <div class="single-portfolio-item shadow">
-                      <img src={project?.image?.url} alt="" />
-                      <div class="portfolio-overlay-content">
-                        <h2>{project.title}</h2>
-                        <p>
-                          <span className="mr-2"> Technologies Used:</span>
-                          {project?.techStack.map((tech, index) => (
-                            <span className="text-primary" key={index}>
-                              {tech}
-                              {index !== project?.techStack?.length - 1 && ", "}
-                            </span>
-                          ))}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-                {userData?.user?.projects.slice(2, 5).map((project, index) => (
-                  <div class="col-lg-4 mb-4" key={index}>
-                    <div class="single-portfolio-item shadow">
-                      <img src={project?.image?.url} alt="" />
-                      <div class="portfolio-overlay-content">
-                        <h2>{project?.title}</h2>
-                        <p>
-                          <span className="mr-2"> Technologies Used:</span>
-                          {project?.techStack.map((tech, index) => (
-                            <span className="text-primary" key={index}>
-                              {tech}
-                              {index !== project?.techStack?.length - 1 && ", "}
-                            </span>
-                          ))}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <div class="row">
-                {userData?.user?.projects.slice(5, 11).map((project, index) => (
-                  <div class="col-lg-4 mb-4" key={index}>
-                    <div class="single-portfolio-item shadow">
-                      <img src={project?.image?.url} alt="" />
-                      <div class="portfolio-overlay-content">
-                        <h2>{project.title}</h2>
-                        <p>
-                          <span className="mr-2"> Technologies Used:</span>
-                          {project?.techStack.map((tech, index) => (
-                            <span className="text-primary" key={index}>
-                              {tech}
-                              {index !== project?.techStack?.length - 1 && ", "}
-                            </span>
-                          ))}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <div class="row">
+              <div class="row justify-content-center">
                 {userData?.user?.projects
                   .sort((a, b) => a.sequence - b.sequence)
-                  .slice(11, 15)
-                  .map((project, index) => (
-                    <div class="col-lg-3 mb-4" key={index}>
+                  .map((project, index, array) => (
+                    <div
+                      class={`col-lg-${
+                        index === array.length - 1 ? "6" : index < 2 ? "6" : "3"
+                      } mb-4`}
+                      key={index}
+                    >
                       <div class="single-portfolio-item shadow">
-                        <img
-                          className="rounded-3"
-                          src={project?.image?.url}
-                          alt=""
-                        />
+                        <img src={project?.image?.url} alt="" />
                         <div class="portfolio-overlay-content">
-                          <h2>{project?.title}</h2>
+                          <h2>{project.title}</h2>
                           <p>
                             <span className="mr-2"> Technologies Used:</span>
                             {project?.techStack.map((tech, index) => (
