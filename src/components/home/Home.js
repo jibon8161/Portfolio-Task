@@ -102,7 +102,7 @@ const Home = () => {
 
     fetchData();
   }, []);
-  console.log(userData?.user?.social_handles);
+  console.log(userData?.user);
 
   return (
     <div>
@@ -172,7 +172,7 @@ const Home = () => {
                               paddingBottom: "5px",
                             }}
                           >
-                            <Link to={social.link} title={social.platform}>
+                            <Link to={social.url} title={social.platform}>
                               <img
                                 className=""
                                 src={social.image.url}
@@ -738,7 +738,7 @@ const Home = () => {
 
           {/* <!--======  PROJECTS PART START ======--> */}
 
-          <section id="testimonial" className="project-counter-area">
+          <section className="project-counter-area">
             <div className="container">
               <div className="row pb-80">
                 <div className="col-lg-6">
@@ -844,7 +844,7 @@ const Home = () => {
                 <div className="col-lg-6 offset-lg-3 text-center">
                   <div className="section-title pricing-title pb-80">
                     <p className="section-para">
-                      <span></span>our pricing
+                      <span></span> pricing
                     </p>
                     <h1>Popular Pricing Plan For Creative Project</h1>
                   </div>
