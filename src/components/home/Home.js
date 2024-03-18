@@ -102,7 +102,6 @@ const Home = () => {
 
     fetchData();
   }, []);
-  console.log(userData?.user);
 
   return (
     <div>
