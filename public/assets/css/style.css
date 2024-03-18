@@ -449,6 +449,7 @@ header {
 
 .top-header-social-links ul li {
   display: inline-block;
+  width: 55px;
 }
 .top-header-social-links ul li a {
   display: block;
@@ -456,7 +457,7 @@ header {
   border-left: 1px solid #5d6aed;
   text-align: center;
   font-size: 16px;
-  padding: 19px;
+  padding: 12px;
 }
 .top-header-content {
   display: block;
@@ -581,11 +582,11 @@ header {
 ----------------------------------------*/
 
 .hero-bg-1 {
-  background: url(https://images.pexels.com/photos/3861972/pexels-photo-3861972.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+  background: url(https://images.pexels.com/photos/3184454/pexels-photo-3184454.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
   background-color: #ddd;
 }
 .hero-bg-2 {
-  background: url(https://images.pexels.com/photos/276452/pexels-photo-276452.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load);
+  background: url(https://images.pexels.com/photos/5908766/pexels-photo-5908766.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load);
   background-color: #ddd;
 }
 .hero-bg-3 {

@@ -102,7 +102,7 @@ const Home = () => {
 
     fetchData();
   }, []);
-  console.log(userData?.user);
+  console.log(userData?.user?.social_handles);
 
   return (
     <div>
@@ -161,24 +161,27 @@ const Home = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="col-lg-3 text-right border">
+                  <div className="col-lg-3 text-right">
                     <div className="top-header-social-links">
-                      <ul>
-                        <li>
-                          <Link to="#">
-                            <i className="fab fa-facebook-f"></i>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link to="#">
-                            <i className="fab fa-twitter"></i>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link to="#">
-                            <i className="fab fa-instagram"></i>
-                          </Link>
-                        </li>
+                      <ul className="">
+                        {userData?.user?.social_handles.map((social, index) => (
+                          <li
+                            key={index}
+                            style={{
+                              borderBottom: "1px solid #769cef",
+                              paddingBottom: "5px",
+                            }}
+                          >
+                            <Link to={social.link} title={social.platform}>
+                              <img
+                                className=""
+                                src={social.image.url}
+                                alt={social.name}
+                                style={{ marginBottom: "5px" }}
+                              />
+                            </Link>
+                          </li>
+                        ))}
                       </ul>
                     </div>
                   </div>
@@ -639,12 +642,12 @@ const Home = () => {
                     </span>
                     <h1>Have Any Creative Project</h1>
                     <p>
-                      We denounce with righteous indignation and dislike men who
+                      I denounce with righteous indignation and dislike men who
                       are so beguiled and demoralized by the charms of pleasure
                     </p>
-                    <Link to="#" className="btn cta-btn">
-                      meet with us <i className="fa fa-arrow-right"></i>
-                    </Link>
+                    <HashLink to="#Contact" className="btn cta-btn">
+                      meet with Me <i className="fa fa-arrow-right"></i>
+                    </HashLink>
                   </div>
                 </div>
               </div>
@@ -704,37 +707,32 @@ const Home = () => {
 
           {/* <!--======  VIDEO PART START ======--> */}
 
-          <section className="video-area vdeo-bg">
-            <div className="container">
-              <div className="row">
-                <div className="col-lg-12">
-                  <div className="video-icon-area">
-                    {/* Use appropriate React components or libraries for the video popup */}
-                    <Link
-                      to="https://www.youtube.com/watch?v=iogabydg2y0"
-                      className="video-icon video-popup"
-                    >
-                      <i className="fa fa-play"></i>
-                    </Link>
+          {userData?.user?.youtube.map((video, index) => (
+            <section className="video-area vdeo-bg" key={index}>
+              <div className="container">
+                <div className="row">
+                  <div className="col-lg-12">
+                    <div className="video-icon-area">
+                      {/* Use appropriate React components or libraries for the video popup */}
+                      <Link
+                        to={`https://www.youtube.com/watch?v=${video.embedId}`}
+                        className="video-icon video-popup"
+                      >
+                        <i className="fa fa-play"></i>
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="video-content">
-              <span>
-                <img src="assets/images/video-text.png" alt="Video Text" />
-              </span>
-              <h1>Watch Our Latest Videos</h1>
-              <p>
-                Latin professor at Hampden-Sydney College in Virginia, looked up
-                one of the more obscure Latin words, consectetur, from a Lorem
-                Ipsum passage, and going through the cites of the
-              </p>
-              <Link to="#" className="video-read-more">
-                Learn More <i className="fa fa-arrow-right"></i>
-              </Link>
-            </div>
-          </section>
+              <div className="video-content">
+                <h1>{video.title}</h1>
+                <p>{video.description}</p>
+                <Link to={video.learnMoreLink} className="video-read-more">
+                  Learn More <i className="fa fa-arrow-right"></i>
+                </Link>
+              </div>
+            </section>
+          ))}
 
           {/* <!--======  VIDEO PART END ======--> */}
 
@@ -1138,31 +1136,17 @@ const Home = () => {
                   </div>
                   <div className="col-lg-6">
                     <ul className="footer-links">
-                      <li>
-                        <Link to="#">
-                          <i className="fab fa-facebook-f"></i>
-                        </Link>
-                      </li>
-                      <li>
-                        <Link to="#">
-                          <i className="fab fa-twitter"></i>
-                        </Link>
-                      </li>
-                      <li>
-                        <Link to="#">
-                          <i className="fab fa-google-plus"></i>
-                        </Link>
-                      </li>
-                      <li>
-                        <Link to="#">
-                          <i className="fab fa-behance"></i>
-                        </Link>
-                      </li>
-                      <li>
-                        <Link to="#">
-                          <i className="fab fa-instagram"></i>
-                        </Link>
-                      </li>
+                      {userData?.user?.social_handles.map((social, index) => (
+                        <li key={index}>
+                          <Link
+                            className="p-2"
+                            to={social.link}
+                            title={social.platform}
+                          >
+                            <img className="" src={social?.image?.url} alt="" />
+                          </Link>
+                        </li>
+                      ))}
                     </ul>
                   </div>
                 </div>
