@@ -7,33 +7,24 @@ import { Link } from "react-router-dom";
 import Service from "../pages/Service";
 
 const Home = () => {
-  const teamMembers = [
-    {
-      name: "Joseph M. Fondren",
-      role: "Apps designer",
-      imgSrc: "assets/images/team/1.png",
-    },
-    {
-      name: "Pauline R. Stapleton",
-      role: "Web developer",
-      imgSrc: "assets/images/team/2.png",
-    },
-    {
-      name: "Robin A. Santiago",
-      role: "Apps designer",
-      imgSrc: "assets/images/team/3.png",
-    },
-    {
-      name: "Pauline R. Stapleton",
-      role: "Web developer",
-      imgSrc: "assets/images/team/2.png",
-    },
-    {
-      name: "Pauline R. Stapleton",
-      role: "Web developer",
-      imgSrc: "assets/images/team/2.png",
-    },
-  ];
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -198,7 +189,141 @@ const Home = () => {
                     </div>
                   </div>
                   <div className="col-lg-10 text-right">
-                    <div className="mobile-menu-wrap"></div>
+                    {/* Toggle button for mobile menu */}
+                    <button
+                      style={{
+                        backgroundColor: "transparent",
+                        color: "#ffffff",
+                        padding: "",
+                        borderRadius: "20px",
+                        border: "none",
+                        cursor: "pointer",
+                        opacity: windowWidth <= 992 ? 1 : 0, // Make visible only on small screens
+                        pointerEvents: windowWidth <= 992 ? "auto" : "none", // Enable pointer events only on small screens
+                      }}
+                      onClick={toggleMenu}
+                    >
+                      {isMenuOpen ? <>&#8801;</> : <>&#8801;</>}{" "}
+                      {/* Three lines symbol */}
+                    </button>
+
+                    {/* Mobile menu */}
+                    {isMenuOpen && (
+                      <div
+                        style={{
+                          backgroundColor: "#f8f9fa",
+                          borderRadius: "4px",
+                          padding: "40px",
+                          marginTop: "8px",
+                          textAlign: "center",
+                        }}
+                      >
+                        <nav>
+                          <ul style={{ listStyle: "none", padding: 0 }}>
+                            <li>
+                              <a
+                                style={{
+                                  textDecoration: "none",
+                                  color: "#333",
+                                }}
+                                href="#home"
+                              >
+                                Home
+                              </a>
+                            </li>
+                            <li>
+                              <a
+                                style={{
+                                  textDecoration: "none",
+                                  color: "#333",
+                                }}
+                                href="#About"
+                              >
+                                About
+                              </a>
+                            </li>
+                            <li>
+                              <a
+                                style={{
+                                  textDecoration: "none",
+                                  color: "#333",
+                                }}
+                                href="#Services"
+                              >
+                                Services
+                              </a>
+                            </li>
+                            <li>
+                              <a
+                                style={{
+                                  textDecoration: "none",
+                                  color: "#333",
+                                }}
+                                href="#portfolio"
+                              >
+                                Projects
+                              </a>
+                            </li>
+                            <li>
+                              <a
+                                style={{
+                                  textDecoration: "none",
+                                  color: "#333",
+                                }}
+                                href="#team"
+                              >
+                                Skills
+                              </a>
+                            </li>
+                            <li>
+                              <a
+                                style={{
+                                  textDecoration: "none",
+                                  color: "#333",
+                                }}
+                                href="#testimonial"
+                              >
+                                Testimonial
+                              </a>
+                            </li>
+                            <li>
+                              <a
+                                style={{
+                                  textDecoration: "none",
+                                  color: "#333",
+                                }}
+                                href="#Blog"
+                              >
+                                Professional Journey
+                              </a>
+                            </li>
+                            <li>
+                              <a
+                                style={{
+                                  textDecoration: "none",
+                                  color: "#333",
+                                }}
+                                href="#price"
+                              >
+                                Price
+                              </a>
+                            </li>
+                            <li>
+                              <a
+                                style={{
+                                  textDecoration: "none",
+                                  color: "#333",
+                                }}
+                                href="#Contact"
+                              >
+                                Contact
+                              </a>
+                            </li>
+                          </ul>
+                        </nav>
+                      </div>
+                    )}
+
                     <div className="header-search">
                       <span className="search-btn">
                         <i className="fa fa-search"></i>
@@ -206,9 +331,12 @@ const Home = () => {
                     </div>
                     <div className="main-menu">
                       <nav>
-                        <ul id="mobile-menu">
-                          <li className="current">
-                            <a href="#home">Home</a>
+                        <ul>
+                          {/* Desktop menu items */}
+                          <li>
+                            <a className="active" href="#home">
+                              Home
+                            </a>
                           </li>
                           <li>
                             <a href="#About">About</a>
@@ -237,7 +365,6 @@ const Home = () => {
                         </ul>
                       </nav>
                     </div>
-
                     {/* Display user's name here */}
                   </div>
                 </div>
