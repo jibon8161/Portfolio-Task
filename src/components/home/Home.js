@@ -207,7 +207,7 @@ const Home = () => {
                      
                     </button>
 
-                    {/* Mobile menu */}
+                   
                     {isMenuOpen && (
                       <div
                         style={{
@@ -332,7 +332,7 @@ const Home = () => {
                     <div className="main-menu">
                       <nav>
                         <ul>
-                          {/* Desktop menu items */}
+                        
                           <li>
                             <a className="active" href="#home">
                               Home
