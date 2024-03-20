@@ -188,31 +188,31 @@ const Home = () => {
                       </Link>
                     </div>
                   </div>
-                  <div className="col-lg-10 text-right">
-                    {/* Toggle button for mobile menu */}
+                  <div className="col-lg-10 text-right ">
+               
                     <button
                       style={{
                         backgroundColor: "transparent",
                         color: "#ffffff",
-                        padding: "",
                         borderRadius: "20px",
                         border: "none",
                         cursor: "pointer",
-                        opacity: windowWidth <= 992 ? 1 : 0, // Make visible only on small screens
-                        pointerEvents: windowWidth <= 992 ? "auto" : "none", // Enable pointer events only on small screens
+                        opacity: windowWidth <= 992 ? 1 : 0, 
+                        pointerEvents: windowWidth <= 992 ? "auto" : "none", 
+                        fontSize: windowWidth <= 576 ? "18px" : "24px", 
                       }}
                       onClick={toggleMenu}
                     >
                       {isMenuOpen ? <>&#8801;</> : <>&#8801;</>}{" "}
-                      {/* Three lines symbol */}
+                     
                     </button>
 
                     {/* Mobile menu */}
                     {isMenuOpen && (
                       <div
                         style={{
-                          backgroundColor: "#f8f9fa",
-                          borderRadius: "4px",
+                          backgroundColor: "#000000",
+                          borderRadius: "8px",
                           padding: "40px",
                           marginTop: "8px",
                           textAlign: "center",
@@ -224,7 +224,7 @@ const Home = () => {
                               <a
                                 style={{
                                   textDecoration: "none",
-                                  color: "#333",
+                                  color: "#ffffff",
                                 }}
                                 href="#home"
                               >
@@ -235,7 +235,7 @@ const Home = () => {
                               <a
                                 style={{
                                   textDecoration: "none",
-                                  color: "#333",
+                                  color: "#ffffff",
                                 }}
                                 href="#About"
                               >
@@ -246,7 +246,7 @@ const Home = () => {
                               <a
                                 style={{
                                   textDecoration: "none",
-                                  color: "#333",
+                                  color: "#ffffff",
                                 }}
                                 href="#Services"
                               >
@@ -257,7 +257,7 @@ const Home = () => {
                               <a
                                 style={{
                                   textDecoration: "none",
-                                  color: "#333",
+                                  color: "#ffffff",
                                 }}
                                 href="#portfolio"
                               >
@@ -268,7 +268,7 @@ const Home = () => {
                               <a
                                 style={{
                                   textDecoration: "none",
-                                  color: "#333",
+                                  color: "#ffffff",
                                 }}
                                 href="#team"
                               >
@@ -279,7 +279,7 @@ const Home = () => {
                               <a
                                 style={{
                                   textDecoration: "none",
-                                  color: "#333",
+                                  color: "#ffffff",
                                 }}
                                 href="#testimonial"
                               >
@@ -290,7 +290,7 @@ const Home = () => {
                               <a
                                 style={{
                                   textDecoration: "none",
-                                  color: "#333",
+                                  color: "#ffffff",
                                 }}
                                 href="#Blog"
                               >
@@ -301,7 +301,7 @@ const Home = () => {
                               <a
                                 style={{
                                   textDecoration: "none",
-                                  color: "#333",
+                                  color: "#ffffff",
                                 }}
                                 href="#price"
                               >
@@ -312,7 +312,7 @@ const Home = () => {
                               <a
                                 style={{
                                   textDecoration: "none",
-                                  color: "#333",
+                                  color: "#ffffff",
                                 }}
                                 href="#Contact"
                               >
@@ -365,7 +365,7 @@ const Home = () => {
                         </ul>
                       </nav>
                     </div>
-                    {/* Display user's name here */}
+                  
                   </div>
                 </div>
               </div>
@@ -607,9 +607,9 @@ const Home = () => {
                     <div className="col-lg-6 mb-4" key={index}>
                       <div className="single-service-box">
                         <div className="single-service-icon-box ">
-                          {/* <p>{index + 1}</p> */}
+                         
                           <img src={service?.image.url} alt="" />
-                          {/* <i className={`fas ${service.image.url}`}></i> */}
+                        
                         </div>
                         <div className="service-box-content">
                           <h3>{service?.name}</h3>
@@ -776,7 +776,7 @@ const Home = () => {
                 <div className="row">
                   <div className="col-lg-12">
                     <div className="video-icon-area">
-                      {/* Use appropriate React components or libraries for the video popup */}
+                  
                       <Link
                         to={`https://www.youtube.com/watch?v=${video.embedId}`}
                         className="video-icon video-popup"
