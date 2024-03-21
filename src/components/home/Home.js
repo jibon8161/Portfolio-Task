@@ -189,7 +189,6 @@ const Home = () => {
                     </div>
                   </div>
                   <div className="col-lg-10 text-right ">
-               
                     <button
                       style={{
                         backgroundColor: "transparent",
@@ -197,17 +196,15 @@ const Home = () => {
                         borderRadius: "20px",
                         border: "none",
                         cursor: "pointer",
-                        opacity: windowWidth <= 992 ? 1 : 0, 
-                        pointerEvents: windowWidth <= 992 ? "auto" : "none", 
-                        fontSize: windowWidth <= 576 ? "18px" : "24px", 
+                        opacity: windowWidth <= 992 ? 1 : 0,
+                        pointerEvents: windowWidth <= 992 ? "auto" : "none",
+                        fontSize: windowWidth <= 576 ? "18px" : "24px",
                       }}
                       onClick={toggleMenu}
                     >
                       {isMenuOpen ? <>&#8801;</> : <>&#8801;</>}{" "}
-                     
                     </button>
 
-                   
                     {isMenuOpen && (
                       <div
                         style={{
@@ -332,7 +329,6 @@ const Home = () => {
                     <div className="main-menu">
                       <nav>
                         <ul>
-                        
                           <li>
                             <a className="active" href="#home">
                               Home
@@ -365,7 +361,6 @@ const Home = () => {
                         </ul>
                       </nav>
                     </div>
-                  
                   </div>
                 </div>
               </div>
@@ -607,9 +602,7 @@ const Home = () => {
                     <div className="col-lg-6 mb-4" key={index}>
                       <div className="single-service-box">
                         <div className="single-service-icon-box ">
-                         
                           <img src={service?.image.url} alt="" />
-                        
                         </div>
                         <div className="service-box-content">
                           <h3>{service?.name}</h3>
@@ -776,7 +769,6 @@ const Home = () => {
                 <div className="row">
                   <div className="col-lg-12">
                     <div className="video-icon-area">
-                  
                       <Link
                         to={`https://www.youtube.com/watch?v=${video.embedId}`}
                         className="video-icon video-popup"
