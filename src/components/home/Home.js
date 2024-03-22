@@ -94,6 +94,8 @@ const Home = () => {
     fetchData();
   }, []);
 
+  console.log(userData?.user);
+
   return (
     <div>
       {loader ? (
@@ -676,6 +678,8 @@ const Home = () => {
                               </span>
                             ))}
                           </p>
+                          <p>Github URL : {project.githuburl}</p>
+                          <p>Live URL : {project.liveurl}</p>
                         </div>
                       </div>
                     </div>
