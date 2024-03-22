@@ -9,7 +9,24 @@ import Service from "../pages/Service";
 const Home = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [isSticky, setIsSticky] = useState(false);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const offset = window.scrollY;
+      if (offset > 0) {
+        setIsSticky(true);
+      } else {
+        setIsSticky(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -180,17 +197,30 @@ const Home = () => {
                 </div>
               </div>
             </div>
-            <div className="bottom-header-area">
+            <div
+              className="bottom-header-area"
+              style={{
+                position: isSticky ? "fixed" : "relative",
+                top: isSticky ? "0" : "auto",
+                left: isSticky ? "0" : "auto",
+                right: isSticky ? "0" : "auto",
+                zIndex: isSticky ? "1000" : "auto",
+                backgroundColor:
+                  isSticky && windowWidth <= 992
+                    ? "transparent"
+                    : "rgba(0, 0, 0, 0.5)",
+              }}
+            >
               <div className="container">
                 <div className="row">
                   <div className="col-lg-2">
                     <div className="logo">
-                      <Link to="/">
+                      <a href="/">
                         <img src="assets/images/logo.png" alt="" />
-                      </Link>
+                      </a>
                     </div>
                   </div>
-                  <div className="col-lg-10 text-right ">
+                  <div className="col-lg-12 text-right ">
                     <button
                       style={{
                         backgroundColor: "transparent",
