@@ -172,7 +172,7 @@ const Home = () => {
                   </div>
                   <div className="col-lg-3 text-right">
                     <div className="top-header-social-links">
-                      <ul className="">
+                      <ul className="d-flex">
                         {userData?.user?.social_handles.map((social, index) => (
                           <li
                             key={index}
@@ -555,7 +555,7 @@ const Home = () => {
                   <img
                     src={userData?.user?.about?.avatar?.url}
                     alt=""
-                    className="about-img-1"
+                    className="about-img-1 p-5"
                   />
                 </div>
                 <div className="col-lg-5 offset-lg-7">
