@@ -250,103 +250,113 @@ const Home = () => {
                         <nav>
                           <ul style={{ listStyle: "none", padding: 0 }}>
                             <li>
-                              <a
+                              <HashLink
                                 style={{
                                   textDecoration: "none",
                                   color: "#ffffff",
                                 }}
-                                href="#home"
+                                smooth
+                                to="#home"
                               >
                                 Home
-                              </a>
+                              </HashLink>
                             </li>
+
                             <li>
-                              <a
+                              <HashLink
                                 style={{
                                   textDecoration: "none",
                                   color: "#ffffff",
                                 }}
-                                href="#About"
+                                smooth
+                                to="#About"
                               >
                                 About
-                              </a>
+                              </HashLink>
                             </li>
                             <li>
-                              <a
+                              <HashLink
                                 style={{
                                   textDecoration: "none",
                                   color: "#ffffff",
                                 }}
-                                href="#Services"
+                                smooth
+                                to="#Services"
                               >
                                 Services
-                              </a>
+                              </HashLink>
                             </li>
                             <li>
-                              <a
+                              <HashLink
                                 style={{
                                   textDecoration: "none",
                                   color: "#ffffff",
                                 }}
-                                href="#portfolio"
+                                smooth
+                                to="#portfolio"
                               >
                                 Projects
-                              </a>
+                              </HashLink>
                             </li>
                             <li>
-                              <a
+                              <HashLink
                                 style={{
                                   textDecoration: "none",
                                   color: "#ffffff",
                                 }}
-                                href="#team"
+                                smooth
+                                to="#team"
                               >
                                 Skills
-                              </a>
+                              </HashLink>
                             </li>
                             <li>
-                              <a
+                              <HashLink
                                 style={{
                                   textDecoration: "none",
                                   color: "#ffffff",
                                 }}
-                                href="#testimonial"
+                                smooth
+                                to="#testimonial"
                               >
                                 Testimonial
-                              </a>
+                              </HashLink>
                             </li>
                             <li>
-                              <a
+                              <HashLink
                                 style={{
                                   textDecoration: "none",
                                   color: "#ffffff",
                                 }}
-                                href="#Blog"
+                                smooth
+                                to="#Blog"
                               >
                                 Professional Journey
-                              </a>
+                              </HashLink>
                             </li>
                             <li>
-                              <a
+                              <HashLink
                                 style={{
                                   textDecoration: "none",
                                   color: "#ffffff",
                                 }}
-                                href="#price"
+                                smooth
+                                to="#price"
                               >
                                 Price
-                              </a>
+                              </HashLink>
                             </li>
                             <li>
-                              <a
+                              <HashLink
                                 style={{
                                   textDecoration: "none",
                                   color: "#ffffff",
                                 }}
-                                href="#Contact"
+                                smooth
+                                to="#Contact"
                               >
                                 Contact
-                              </a>
+                              </HashLink>
                             </li>
                           </ul>
                         </nav>
@@ -362,33 +372,49 @@ const Home = () => {
                       <nav>
                         <ul>
                           <li>
-                            <a className="active" href="#home">
+                            <HashLink className="active" smooth to="#home">
                               Home
-                            </a>
+                            </HashLink>
                           </li>
                           <li>
-                            <a href="#About">About</a>
+                            <HashLink smooth to="#About">
+                              About
+                            </HashLink>
                           </li>
                           <li>
-                            <a href="#Services">Services</a>
+                            <HashLink smooth to="#Services">
+                              Services
+                            </HashLink>
                           </li>
                           <li>
-                            <a href="#portfolio">Projects</a>
+                            <HashLink smooth to="#portfolio">
+                              Projects
+                            </HashLink>
                           </li>
                           <li>
-                            <a href="#team">Skills</a>
+                            <HashLink smooth to="#team">
+                              Skills
+                            </HashLink>
                           </li>
                           <li>
-                            <a href="#testimonial">Testimonial</a>
+                            <HashLink smooth to="#testimonial">
+                              Testimonial
+                            </HashLink>
                           </li>
                           <li>
-                            <a href="#Blog">Professional Journey</a>
+                            <HashLink smooth to="#Blog">
+                              Professional Journey
+                            </HashLink>
                           </li>
                           <li>
-                            <a href="#price">Price</a>
+                            <HashLink smooth to="#price">
+                              Price
+                            </HashLink>
                           </li>
                           <li>
-                            <a href="#Contact">Contact</a>
+                            <HashLink smooth to="#Contact">
+                              Contact
+                            </HashLink>
                           </li>
                         </ul>
                       </nav>
